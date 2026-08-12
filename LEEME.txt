@@ -1,0 +1,26 @@
+TEJIDOS DE PODER · PROTOTIPO v0.2
+
+Cómo abrirlo:
+1. Abrí index.html con Chrome, Edge o Firefox.
+2. No necesita instalación ni conexión a internet para funcionar (salvo el enlace externo a Instagram).
+
+Cambios principales respecto de v0.1:
+- Estética más editorial y alineada con el logo y las fotografías.
+- Frase de marca: “Amuletos en macramé con piedras naturales”.
+- Categorías reales: Collares, Gargantillas, Pulseras, Anillos, Aros y Tobilleras.
+- Búsqueda y filtros funcionales por categoría y piedra.
+- Piezas vendidas separadas en un Archivo.
+- Sección de piezas personalizadas con enlace a Instagram.
+- Información de envíos, cuotas y compra segura más visible.
+- Dos niveles de nombre de producto: nombre de colección + descripción clara.
+- Carrito persistente mientras se usa el mismo navegador.
+
+IMPORTANTE:
+Los nombres de colección “Horizonte andino”, “Memoria del mar”, “Luz nocturna”, “Raíz rosa”, “Fuego mineral” y “Reflejo ancestral” son propuestas visuales del prototipo. No se consideran nombres definitivos hasta que Tejidos de Poder los apruebe o reemplace.
+
+Todavía NO están conectados:
+- Mercado Pago
+- Correo Argentino
+- Stock real
+- Checkout
+- Panel de administración

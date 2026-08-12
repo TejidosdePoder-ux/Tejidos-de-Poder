@@ -1,1 +1,192 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tejidos de Poder</title><meta http-equiv="refresh" content="0; url=./prototype.html"></head><body><p>Tejidos de Poder · Prototype v0.2</p></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#183e57">
+<title>Tejidos de Poder · Prototipo v0.2</title>
+<style>
+:root{
+  --ink:#183e57; --ink-2:#102c3d; --teal:#137f7d; --aqua:#3b9da0;
+  --paper:#fffdf9; --sand:#f3ede4; --sand-2:#e8ded1; --muted:#6b706e;
+  --line:#e7ded3; --white:#fff; --sold:#8b7d72;
+  --shadow:0 18px 55px rgba(21,48,61,.12); --soft:0 8px 28px rgba(21,48,61,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);color:#26312f}
+button,input{font:inherit}button{cursor:pointer}
+img{display:block;max-width:100%}
+.announcement{background:var(--ink-2);color:#fff;text-align:center;padding:8px 12px;font-size:12px;letter-spacing:.04em}
+.top{position:sticky;top:0;z-index:30;background:rgba(255,253,249,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(231,222,211,.8)}
+.nav{max-width:1200px;margin:auto;height:72px;display:flex;align-items:center;gap:20px;padding:0 22px}
+.brand{display:flex;align-items:center;gap:11px;border:0;background:none;color:var(--ink);font-weight:900;letter-spacing:.09em;padding:0}
+.brand img{width:48px;height:48px;object-fit:contain;border-radius:12px}
+.navlinks{margin-left:auto;display:flex;gap:5px}.navlinks button{border:0;background:none;color:var(--ink);padding:10px 12px;border-radius:999px}.navlinks button:hover{background:var(--sand)}
+.cartbtn{border:0;border-radius:999px;background:var(--ink);color:#fff;padding:10px 15px;font-weight:750;white-space:nowrap}.badge{display:inline-grid;place-items:center;min-width:21px;height:21px;border-radius:999px;background:#fff;color:var(--ink);font-size:11px;margin-left:6px}
+.page{display:none}.page.active{display:block}.wrap{max-width:1200px;margin:auto;padding-left:22px;padding-right:22px}
+.eyebrow{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+.serif{font-family:Georgia,"Times New Roman",serif;color:var(--ink)}
+.primary,.secondary,.textbtn{border-radius:999px;font-weight:780}.primary{border:1px solid var(--ink);background:var(--ink);color:#fff;padding:14px 20px}.secondary{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:14px 20px}.textbtn{border:0;background:transparent;color:var(--ink);padding:10px 0;text-decoration:underline;text-underline-offset:4px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center;min-height:680px;padding-top:48px;padding-bottom:72px}.hero h1{font-size:clamp(52px,6.4vw,84px);line-height:.95;margin:14px 0 22px;letter-spacing:-.035em}.hero p{font-size:18px;line-height:1.65;color:#525c59;max-width:585px}.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:28px}
+.heroVisual{position:relative;min-height:590px}.heroMain{position:absolute;inset:0 70px 0 0;border-radius:240px 240px 32px 32px;overflow:hidden;box-shadow:var(--shadow);background:#ddd}.heroMain img{width:100%;height:100%;object-fit:cover}.heroFloat{position:absolute;width:205px;right:0;bottom:32px;background:#fff;border:8px solid var(--paper);border-radius:115px 115px 24px 24px;overflow:hidden;box-shadow:var(--shadow)}.heroFloat img{width:100%;aspect-ratio:3/4;object-fit:cover}.heroStamp{position:absolute;left:-14px;bottom:34px;background:rgba(255,253,249,.95);border:1px solid var(--line);border-radius:18px;padding:13px 15px;box-shadow:var(--soft);font-size:12px;line-height:1.35;color:var(--ink);font-weight:800}
+.section{padding-top:76px;padding-bottom:76px}.section.alt{max-width:none;background:var(--sand)}.inner{max-width:1200px;margin:auto;padding-left:22px;padding-right:22px}.title{display:flex;justify-content:space-between;align-items:end;gap:26px;margin-bottom:30px}.title h2{font-size:clamp(34px,4vw,52px);margin:7px 0 0;line-height:1.02}.title p{max-width:540px;color:var(--muted);line-height:1.6;margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 5px 20px rgba(21,48,61,.045);transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.cardimgWrap{position:relative;overflow:hidden}.cardimg{aspect-ratio:4/5;width:100%;object-fit:cover;background:#eee;transition:.35s}.card:hover .cardimg{transform:scale(1.018)}.uniqueFlag{position:absolute;left:12px;top:12px;background:rgba(255,253,249,.92);color:var(--ink);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;backdrop-filter:blur(8px)}.cardbody{padding:17px 17px 18px}.stone{font-size:11px;color:var(--teal);font-weight:900;letter-spacing:.11em;text-transform:uppercase}.artname{font-family:Georgia,"Times New Roman",serif;color:var(--ink);font-size:25px;line-height:1.05;margin:8px 0 6px}.descname{font-size:13px;line-height:1.45;color:var(--muted);min-height:38px}.priceRow{display:flex;justify-content:space-between;gap:12px;align-items:end;margin-top:16px}.price{font-weight:850;font-size:18px;color:#26312f}.installments{font-size:10px;color:var(--teal);font-weight:900;text-transform:uppercase;text-align:right}.card button{width:100%;margin-top:14px;border:1px solid var(--line);background:var(--paper);padding:11px;border-radius:13px;color:var(--ink);font-weight:800}
+.categoryGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:11px}.categoryTile{border:1px solid var(--line);background:#fff;border-radius:18px;padding:20px 13px;text-align:center;color:var(--ink);transition:.2s}.categoryTile:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}.categoryTile strong{display:block;font-family:Georgia,serif;font-size:18px}.categoryTile span{font-size:11px;opacity:.72;display:block;margin-top:5px}
+.stoneChips{display:flex;gap:10px;flex-wrap:wrap}.stoneChip{border:1px solid var(--sand-2);background:rgba(255,255,255,.7);border-radius:999px;padding:11px 15px;color:var(--ink);font-weight:750}
+.customBlock{display:grid;grid-template-columns:1.08fr .92fr;gap:0;background:var(--ink);border-radius:30px;overflow:hidden;color:#fff;box-shadow:var(--shadow)}.customText{padding:48px}.customText .eyebrow{color:#8bd2cf}.customText h2{font-family:Georgia,serif;font-size:46px;line-height:1.02;margin:10px 0 18px}.customText p{line-height:1.7;color:#d9e4e4;max-width:570px}.customText .secondary{border-color:#fff;color:#fff}.customPhoto{min-height:430px}.customPhoto img{width:100%;height:100%;object-fit:cover}
+.story{display:grid;grid-template-columns:.92fr 1.08fr;gap:46px;align-items:center}.story video{width:100%;max-height:620px;object-fit:cover;border-radius:28px;background:#111;box-shadow:var(--soft)}.story h2{font-size:48px;line-height:1.03;margin:10px 0 18px}.story p{line-height:1.75;color:#555}.trust{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fff}.trustItem{padding:24px;text-align:center}.trustItem+ .trustItem{border-left:1px solid var(--line)}.trustItem strong{display:block;color:var(--ink);font-family:Georgia,serif;font-size:21px}.trustItem span{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+.archivePreview{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}.archiveIntro,.archiveCard{border-radius:22px;padding:26px}.archiveIntro{background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:space-between;min-height:250px}.archiveIntro h3{font-family:Georgia,serif;font-size:34px;margin:8px 0}.archiveIntro p{color:#d6e0e1;line-height:1.6}.archiveCard{min-height:250px;background:linear-gradient(145deg,#e9dfd5,#f8f2ea);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:end}.archiveCard .soldTag{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--sold);font-weight:900}.archiveCard h3{font-family:Georgia,serif;color:var(--ink);font-size:26px;margin:7px 0}.archiveCard p{color:var(--muted);font-size:12px;margin:0}
+.catalogHead{padding-top:52px;padding-bottom:26px}.catalogHead h1,.productInfo h1,.cartwrap h1,.archiveHead h1{font-size:clamp(42px,5vw,60px);line-height:1;margin:8px 0 12px}.catalogHead p{color:var(--muted);max-width:650px;line-height:1.6}.toolbar{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:14px;margin-top:26px;align-items:center}.search{position:relative}.search input{width:100%;border:1px solid var(--line);background:#fff;border-radius:999px;padding:13px 16px 13px 42px;outline:none}.search:before{content:'⌕';position:absolute;left:16px;top:8px;color:var(--muted);font-size:23px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.chip{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:999px;color:var(--ink)}.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}.catalogMeta{display:flex;justify-content:space-between;align-items:center;margin:26px 0 16px;color:var(--muted);font-size:13px}.emptyState{grid-column:1/-1;border:1px dashed var(--sand-2);border-radius:24px;text-align:center;padding:70px 20px;color:var(--muted);background:#fff}.emptyState strong{display:block;color:var(--ink);font-family:Georgia,serif;font-size:28px;margin-bottom:10px}
+.product{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;padding-top:46px;padding-bottom:82px}.galleryMain{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:28px;background:#eee;box-shadow:var(--soft)}.thumbs{display:flex;gap:10px;margin-top:12px;overflow:auto}.thumbs img{width:78px;height:94px;object-fit:cover;border-radius:13px;border:2px solid transparent;cursor:pointer}.thumbs img.sel{border-color:var(--teal)}.productInfo{padding-top:10px}.productInfo .artTitle{font-size:clamp(46px,5vw,64px);line-height:.98;margin:9px 0 8px}.productDescName{color:var(--muted);font-size:16px;line-height:1.45}.productInfo .price{font-size:30px;margin-top:20px}.buyMeta{display:flex;gap:12px;flex-wrap:wrap;margin:13px 0 0}.pill{border-radius:999px;padding:8px 11px;background:var(--sand);font-size:11px;color:var(--ink);font-weight:800}.pill.ok{background:#e4f2ef;color:#146b67}.wide{width:100%;margin-top:16px;padding:15px}.ship{margin-top:22px;padding:19px;border-radius:18px;background:var(--sand)}.ship p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.45}.ship input{width:100%;margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}.details{margin-top:26px;border-top:1px solid var(--line)}.detailRow{padding:18px 0;border-bottom:1px solid var(--line)}.detailRow strong{display:block;color:var(--ink);margin-bottom:6px}.detailRow p{margin:0;color:#59615f;line-height:1.65}.personalMini{margin-top:22px;border:1px solid var(--line);border-radius:18px;padding:17px}.personalMini strong{color:var(--ink)}.personalMini p{font-size:13px;color:var(--muted);margin:6px 0 0}
+.cartwrap{max-width:880px;margin:auto;padding-top:52px;padding-bottom:90px}.cartitem{display:grid;grid-template-columns:105px 1fr auto;gap:17px;padding:19px 0;border-bottom:1px solid var(--line);align-items:center}.cartitem img{width:105px;height:126px;object-fit:cover;border-radius:15px}.cartitem .cartArt{font-family:Georgia,serif;color:var(--ink);font-size:22px}.cartitem .cartDesc{font-size:12px;color:var(--muted);margin-top:4px}.remove{border:0;background:none;color:#8d514b}.summary{margin-top:30px;background:var(--sand);padding:25px;border-radius:22px}.sumrow{display:flex;justify-content:space-between;gap:20px;padding:8px 0}.total{font-size:22px;font-weight:850;border-top:1px solid #d5c9bb;margin-top:10px;padding-top:18px}.empty{text-align:center;padding:80px 20px;color:var(--muted)}
+.archiveHead{padding-top:54px;padding-bottom:20px}.archiveHead p{max-width:700px;color:var(--muted);line-height:1.65}.archiveGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:80px}.soldCard{min-height:280px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#eee5dc,#faf6f0);padding:25px;display:flex;flex-direction:column;justify-content:space-between}.soldMark{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(24,62,87,.08);color:var(--ink);font-family:Georgia,serif;font-size:23px}.soldCard h3{font-family:Georgia,serif;color:var(--ink);font-size:28px;margin:14px 0 7px}.soldCard p{color:var(--muted);line-height:1.5;font-size:13px}.soldCard .soldTag{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--sold);font-weight:900}
+footer{background:var(--ink-2);color:#d9e4e4;padding:44px 22px}.footerInner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:30px;align-items:center}.footerBrand{font-weight:900;letter-spacing:.08em;color:#fff}.footerSmall{font-size:12px;color:#aebfc2}.notice{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:#172825;color:#fff;padding:12px 18px;border-radius:999px;z-index:60;transition:.25s;box-shadow:var(--shadow)}.notice.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:900px){.categoryGrid{grid-template-columns:repeat(3,1fr)}.customBlock,.story{grid-template-columns:1fr}.customPhoto{min-height:360px}.archivePreview{grid-template-columns:1fr 1fr}.archiveIntro{grid-column:1/-1}.product{grid-template-columns:1fr}.productInfo{max-width:720px}.archiveGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.announcement{font-size:10px}.nav{height:62px;padding:0 13px}.brand span{display:none}.brand img{width:42px;height:42px}.navlinks{display:none}.cartbtn{padding:9px 12px}.wrap,.inner{padding-left:16px;padding-right:16px}.hero{grid-template-columns:1fr;gap:25px;padding-top:24px;padding-bottom:48px;min-height:0}.heroVisual{order:-1;min-height:470px}.heroMain{inset:0 42px 0 0;border-radius:190px 190px 24px 24px}.heroFloat{width:142px;border-width:6px;bottom:22px}.heroStamp{left:5px;bottom:17px;padding:10px;font-size:10px}.hero h1{font-size:50px}.hero p{font-size:16px}.section{padding-top:54px;padding-bottom:54px}.title{display:block}.title p{margin-top:10px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{border-radius:18px}.cardbody{padding:12px}.artname{font-size:20px}.descname{font-size:11px;min-height:48px}.stone{font-size:9px}.priceRow{display:block}.installments{text-align:left;margin-top:4px}.categoryGrid{grid-template-columns:repeat(2,1fr)}.customText{padding:30px 24px}.customText h2{font-size:38px}.customPhoto{min-height:310px}.story h2{font-size:39px}.trust{grid-template-columns:1fr}.trustItem+ .trustItem{border-left:0;border-top:1px solid var(--line)}.archivePreview{grid-template-columns:1fr}.archiveIntro{grid-column:auto}.toolbar{grid-template-columns:1fr}.catalogHead{padding-top:34px}.catalogMeta{margin-top:20px}.product{padding:22px 16px 60px;gap:14px}.galleryMain{border-radius:20px}.productInfo .artTitle{font-size:45px}.cartwrap{padding:34px 16px 70px}.cartitem{grid-template-columns:82px 1fr}.cartitem img{width:82px;height:100px}.cartitem>div:last-child{grid-column:2}.archiveGrid{grid-template-columns:1fr}.footerInner{display:block}.footerSmall{margin-top:8px}}
+</style>
+</head>
+<body>
+<div class="announcement">ENVÍOS A TODO EL PAÍS &nbsp;·&nbsp; HASTA 12 CUOTAS &nbsp;·&nbsp; COMPRA SEGURA</div>
+<header class="top">
+  <nav class="nav">
+    <button class="brand" onclick="go('home')"><img src="assets/logo.jpg" alt="Logo Tejidos de Poder"><span>TEJIDOS DE PODER</span></button>
+    <div class="navlinks">
+      <button onclick="go('home')">Inicio</button>
+      <button onclick="go('catalog')">Tienda</button>
+      <button onclick="go('archive')">Archivo</button>
+      <button onclick="goHomeSection('historia')">Historia</button>
+    </div>
+    <button class="cartbtn" onclick="go('cart')">Carrito <span class="badge" id="count">0</span></button>
+  </nav>
+</header>
+<main>
+<section id="home" class="page active">
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Amuletos en macramé · Cafayate, Salta</div>
+      <h1 class="serif">Piezas únicas.<br>Piedras con historia.</h1>
+      <p>Joyería artesanal creada a mano alrededor de piedras naturales. Cada forma guía el tejido y convierte cada pieza en algo irrepetible.</p>
+      <div class="actions"><button class="primary" onclick="go('catalog')">Ver piezas disponibles</button><button class="secondary" onclick="goHomeSection('historia')">Conocer el proyecto</button></div>
+    </div>
+    <div class="heroVisual">
+      <div class="heroMain"><img src="assets/jaspe-abejorro-2.jpg" alt="Collar artesanal con Jaspe Abejorro"></div>
+      <div class="heroFloat"><img src="assets/labradorita-luna-2.jpg" alt="Detalle de collar con Labradorita"></div>
+      <div class="heroStamp">Pieza real<br>fotografiada una por una</div>
+    </div>
+  </div>
+
+  <section class="section wrap">
+    <div class="title"><div><div class="eyebrow">Recién creadas</div><h2 class="serif">Disponibles ahora</h2></div><p>Las piezas únicas tienen stock de una sola unidad. Cuando encuentran dueño pasan al archivo, pero su diseño queda como parte de la historia del proyecto.</p></div>
+    <div class="grid" id="featured"></div>
+    <div style="text-align:center;margin-top:28px"><button class="secondary" onclick="go('catalog')">Ver toda la tienda</button></div>
+  </section>
+
+  <section class="section alt"><div class="inner">
+    <div class="title"><div><div class="eyebrow">Explorá</div><h2 class="serif">Por tipo de pieza</h2></div><p>Tomamos las categorías que ya usa Tejidos de Poder y las simplificamos para que el catálogo sea rápido de recorrer.</p></div>
+    <div class="categoryGrid" id="categoryHome"></div>
+  </div></section>
+
+  <section class="section wrap">
+    <div class="title"><div><div class="eyebrow">Piedras naturales</div><h2 class="serif">Elegí tu piedra</h2></div><p>Otra forma de entrar al catálogo: por el material que primero llama la atención, no por una lista interminable de productos.</p></div>
+    <div class="stoneChips" id="stoneHome"></div>
+  </section>
+
+  <section class="section wrap">
+    <div class="customBlock">
+      <div class="customText"><div class="eyebrow">Piezas personalizadas</div><h2>Una piedra, un diseño pensado para ella.</h2><p>Tejidos de Poder también crea piezas a pedido. La tienda final puede mantener este servicio como contacto especial, sin convertir cada compra en una conversación obligatoria.</p><div class="actions"><a class="secondary" style="display:inline-block;text-decoration:none" href="https://www.instagram.com/tejidosdepoder" target="_blank" rel="noopener">Consultar por Instagram</a></div></div>
+      <div class="customPhoto"><img src="assets/turquesa.jpg" alt="Collar artesanal con Turquesa Peruana"></div>
+    </div>
+  </section>
+
+  <section class="section alt"><div class="inner story" id="historia">
+    <video controls muted playsinline poster="assets/rodocrosita-2.jpg"><source src="assets/trabajando-web.mp4" type="video/mp4"></video>
+    <div><div class="eyebrow">Hecho a mano en Cafayate</div><h2 class="serif">El trabajo detrás de cada pieza.</h2><p>La piedra no entra en un molde industrial. El tejido se adapta a sus formas, sus tonos y sus irregularidades. Por eso la colección cambia todo el tiempo y gran parte de las piezas existe una sola vez.</p><p>Las líneas que pueden repetirse, como determinadas pulseras o modelos de collar, convivirán en la tienda con la colección de piezas únicas.</p><button class="primary" onclick="go('catalog')">Explorar la colección</button></div>
+  </div></section>
+
+  <section class="section wrap">
+    <div class="trust"><div class="trustItem"><strong>Envíos a todo el país</strong><span>La versión final calculará Correo Argentino por código postal.</span></div><div class="trustItem"><strong>Hasta 12 cuotas</strong><span>Información visible sin interrumpir la experiencia de compra.</span></div><div class="trustItem"><strong>Compra segura</strong><span>Pago integrado en la etapa funcional del proyecto.</span></div></div>
+  </section>
+
+  <section class="section wrap">
+    <div class="archivePreview">
+      <div class="archiveIntro"><div><div class="eyebrow" style="color:#8bd2cf">Archivo de piezas</div><h3>Diseños que ya encontraron dueño.</h3><p>En vez de mezclarlos con el stock disponible, los guardamos aparte. Sirven para descubrir el estilo de la marca y como inspiración para futuros trabajos personalizados.</p></div><button class="secondary" style="align-self:flex-start;border-color:white;color:white" onclick="go('archive')">Explorar archivo</button></div>
+      <div class="archiveCard"><div class="soldTag">Pieza vendida</div><h3>Luna intuición</h3><p>Gargantilla de archivo · Piedra Luna</p></div>
+      <div class="archiveCard"><div class="soldTag">Pieza vendida</div><h3>Magia e intuición</h3><p>Diseño histórico de Tejidos de Poder</p></div>
+    </div>
+  </section>
+</section>
+
+<section id="catalog" class="page">
+  <div class="wrap catalogHead"><div class="eyebrow">Tienda</div><h1 class="serif">Piezas disponibles</h1><p>Catálogo separado del archivo de vendidos. Podés buscar por nombre, piedra o filtrar por categoría.</p>
+    <div class="toolbar"><div class="search"><input id="searchInput" placeholder="Buscar piedra o pieza..." oninput="renderCatalog()"></div><button class="secondary" onclick="go('archive')">Ver piezas vendidas</button></div>
+    <div class="filters" id="categoryFilters"></div><div class="filters" id="stoneFilters"></div>
+  </div>
+  <div class="wrap"><div class="catalogMeta"><span id="resultCount"></span><button class="textbtn" onclick="resetFilters()">Limpiar filtros</button></div><div class="grid" id="catalogGrid"></div></div>
+  <div style="height:70px"></div>
+</section>
+
+<section id="product" class="page">
+  <div class="wrap product">
+    <div><img id="mainPhoto" class="galleryMain" alt="Producto"><div class="thumbs" id="thumbs"></div></div>
+    <div class="productInfo"><div class="eyebrow" id="ptype">Pieza única</div><h1 class="serif artTitle" id="partname"></h1><div class="productDescName" id="pname"></div><div class="price" id="pprice"></div><div class="buyMeta"><span class="pill ok" id="availability">✓ Disponible</span><span class="pill">Hasta 12 cuotas</span><span class="pill" id="pstone"></span></div><button class="primary wide" id="addBtn">Agregar al carrito</button><button class="secondary wide" onclick="go('cart')">Ir al carrito</button>
+      <div class="ship"><strong>Calculá tu envío</strong><p>En la tienda funcional este campo consultará las opciones de Correo Argentino.</p><input placeholder="Código postal (demostración)"></div>
+      <div class="details"><div class="detailRow"><strong>Sobre esta pieza</strong><p id="pdesc"></p></div><div class="detailRow"><strong>Una pieza real, no una foto genérica</strong><p>El producto de las fotografías es la pieza que recibís. En piezas únicas no se muestra selector de cantidad porque existe una sola unidad.</p></div><div class="detailRow"><strong>Hecho a mano</strong><p>Macramé artesanal creado en Cafayate, Salta, alrededor de la forma particular de cada piedra.</p></div></div>
+      <div class="personalMini"><strong>¿Buscabas algo parecido?</strong><p>Las piezas únicas no se replican exactamente, pero una pieza vendida puede servir como inspiración para un trabajo personalizado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cart" class="page">
+  <div class="cartwrap"><div class="eyebrow">Compra</div><h1 class="serif">Tu carrito</h1><div id="cartItems"></div><div id="cartSummary"></div></div>
+</section>
+
+<section id="archive" class="page">
+  <div class="wrap archiveHead"><div class="eyebrow">Archivo</div><h1 class="serif">Piezas que ya encontraron dueño</h1><p>Esta sección separa claramente lo vendido de lo disponible. Conserva el universo visual y los nombres de la marca sin hacer que el comprador abra diez productos sólo para descubrir que no tienen stock.</p></div>
+  <div class="wrap archiveGrid" id="archiveGrid"></div>
+</section>
+</main>
+<footer><div class="footerInner"><div><div class="footerBrand">TEJIDOS DE PODER</div><div class="footerSmall">Amuletos en macramé con piedras naturales · Cafayate, Salta</div></div><div class="footerSmall">Prototipo v0.2 · Mercado Pago y Correo Argentino aún no conectados</div></div></footer>
+<div class="notice" id="notice">Agregado al carrito</div>
+<script>
+const categories=['Todas','Collares','Gargantillas','Pulseras','Anillos','Aros','Tobilleras'];
+const products=[
+{id:'turquesa',art:'Horizonte andino',name:'Collar con Turquesa Peruana',price:30000,stone:'Turquesa Peruana',category:'Collares',unique:true,imgs:['assets/turquesa.jpg'],desc:'Collar de macramé tejido a mano alrededor de una turquesa peruana. Pieza única.'},
+{id:'coral',art:'Memoria del mar',name:'Collar con Fósil de Coral',price:32000,stone:'Fósil de Coral',category:'Collares',unique:true,imgs:['assets/fosil-coral.jpg'],desc:'Collar artesanal con fósil de coral y tejido manual. La piedra y el diseño corresponden a la pieza fotografiada.'},
+{id:'luna',art:'Luz nocturna',name:'Collar Labradorita con Piedra Luna',price:40000,stone:'Labradorita · Piedra Luna',category:'Collares',unique:true,imgs:['assets/labradorita-luna-1.jpg','assets/labradorita-luna-2.jpg'],desc:'Diseño con labradorita y detalle de piedra luna, tejido a mano en tonos que acompañan los reflejos naturales de las piedras.'},
+{id:'rodo',art:'Raíz rosa',name:'Gargantilla de Rodocrosita',price:35000,stone:'Rodocrosita',category:'Gargantillas',unique:true,imgs:['assets/rodocrosita-1.jpg','assets/rodocrosita-2.jpg'],desc:'Gargantilla de macramé con rodocrosita. El tejido acompaña la forma natural de la piedra y la deja como protagonista.'},
+{id:'jaspe',art:'Fuego mineral',name:'Collar Jaspe Abejorro',price:38000,stone:'Jaspe Abejorro',category:'Collares',unique:true,imgs:['assets/jaspe-abejorro-1.jpg','assets/jaspe-abejorro-2.jpg'],desc:'Collar de diseño único con jaspe abejorro y tejido de macramé en tonos oscuros y naturales.'},
+{id:'tubular',art:'Reflejo ancestral',name:'Collar con tejido tubular y Labradorita',price:42000,stone:'Labradorita',category:'Collares',unique:true,imgs:['assets/tubular-labradorita-1.jpg','assets/tubular-labradorita-2.jpg'],desc:'Collar con tejido tubular negro y labradorita central. Diseño sobrio construido alrededor de los reflejos de la piedra.'}
+];
+const soldArchive=[
+{name:'Luna intuición',detail:'Gargantilla con Piedra Luna'},
+{name:'Visión cabal',detail:'Pieza histórica de Tejidos de Poder'},
+{name:'Magia e intuición',detail:'Pieza histórica de Tejidos de Poder'},
+{name:'Amuleto fuego',detail:'Pieza histórica de Tejidos de Poder'},
+{name:'Amuleto sanar',detail:'Pieza histórica de Tejidos de Poder'},
+{name:'Amuleto Mar',detail:'Pieza histórica de Tejidos de Poder'}
+];
+const stoneFilters=['Todas las piedras','Labradorita','Turquesa','Rodocrosita','Jaspe','Coral','Piedra Luna'];
+let current=null; let currentCategory='Todas'; let currentStone='Todas las piedras';
+let cart=JSON.parse(localStorage.getItem('tdp-cart-v02')||'[]');
+const money=n=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(n);
+function saveCart(){localStorage.setItem('tdp-cart-v02',JSON.stringify(cart));document.getElementById('count').textContent=cart.length}
+function productCard(p){return `<article class="card"><div class="cardimgWrap"><img class="cardimg" src="${p.imgs[0]}" alt="${p.name}"><span class="uniqueFlag">${p.unique?'Pieza única':'Colección'}</span></div><div class="cardbody"><div class="stone">${p.stone}</div><div class="artname">${p.art}</div><div class="descname">${p.name}</div><div class="priceRow"><div class="price">${money(p.price)}</div><div class="installments">Hasta 12 cuotas</div></div><button onclick="openProduct('${p.id}')">Ver pieza</button></div></article>`}
+function renderHome(){document.getElementById('featured').innerHTML=products.slice(2,5).map(productCard).join('');document.getElementById('categoryHome').innerHTML=categories.slice(1).map(c=>{const n=products.filter(p=>p.category===c).length;return `<button class="categoryTile" onclick="selectCategory('${c}')"><strong>${c}</strong><span>${n?n+' cargado'+(n>1?'s':'')+' en prototipo':'categoría preparada'}</span></button>`}).join('');document.getElementById('stoneHome').innerHTML=stoneFilters.slice(1).map(s=>`<button class="stoneChip" onclick="selectStone('${s}')">${s}</button>`).join('')}
+function renderFilterButtons(){document.getElementById('categoryFilters').innerHTML=categories.map(c=>`<button class="chip ${currentCategory===c?'on':''}" onclick="setCategory('${c}')">${c}</button>`).join('');document.getElementById('stoneFilters').innerHTML=stoneFilters.map(s=>`<button class="chip ${currentStone===s?'on':''}" onclick="setStone('${s}')">${s}</button>`).join('')}
+function renderCatalog(){renderFilterButtons();const q=(document.getElementById('searchInput')?.value||'').trim().toLowerCase();const filtered=products.filter(p=>{const cat=currentCategory==='Todas'||p.category===currentCategory;const stone=currentStone==='Todas las piedras'||p.stone.toLowerCase().includes(currentStone.toLowerCase());const search=!q||(`${p.art} ${p.name} ${p.stone} ${p.category}`).toLowerCase().includes(q);return cat&&stone&&search});document.getElementById('resultCount').textContent=`${filtered.length} ${filtered.length===1?'pieza':'piezas'} disponible${filtered.length===1?'':'s'}`;document.getElementById('catalogGrid').innerHTML=filtered.length?filtered.map(productCard).join(''):`<div class="emptyState"><strong>No hay piezas cargadas aquí todavía.</strong>La categoría ya está preparada para la tienda final. En este prototipo sólo usamos los seis productos reales que nos compartiste.</div>`}
+function setCategory(c){currentCategory=c;renderCatalog()}function setStone(s){currentStone=s;renderCatalog()}
+function selectCategory(c){currentCategory=c;currentStone='Todas las piedras';go('catalog');renderCatalog()}function selectStone(s){currentStone=s;currentCategory='Todas';go('catalog');renderCatalog()}
+function resetFilters(){currentCategory='Todas';currentStone='Todas las piedras';const i=document.getElementById('searchInput');if(i)i.value='';renderCatalog()}
+function renderArchive(){document.getElementById('archiveGrid').innerHTML=soldArchive.map((p,i)=>`<article class="soldCard"><div><div class="soldMark">${['✦','◌','◇','✧','○','⌁'][i%6]}</div><div class="soldTag" style="margin-top:22px">Pieza vendida · Archivo</div><h3>${p.name}</h3><p>${p.detail}</p></div><button class="textbtn" onclick="go('catalog')">Ver piezas disponibles</button></article>`).join('')}
+function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(id==='catalog')renderCatalog();if(id==='cart')renderCart();if(id==='archive')renderArchive()}
+function goHomeSection(section){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('home').classList.add('active');setTimeout(()=>document.getElementById(section).scrollIntoView({behavior:'smooth'}),30)}
+function openProduct(id){current=products.find(p=>p.id===id);document.getElementById('partname').textContent=current.art;document.getElementById('pname').textContent=current.name;document.getElementById('pprice').textContent=money(current.price);document.getElementById('pstone').textContent=current.stone;document.getElementById('pdesc').textContent=current.desc;document.getElementById('ptype').textContent=current.unique?'Pieza única':'Colección permanente';setPhoto(0);document.getElementById('thumbs').innerHTML=current.imgs.map((x,i)=>`<img src="${x}" alt="Vista ${i+1}" onclick="setPhoto(${i})" id="thumb${i}">`).join('');document.getElementById('addBtn').onclick=()=>add(current.id);go('product')}
+function setPhoto(i){if(!current)return;document.getElementById('mainPhoto').src=current.imgs[i];document.getElementById('mainPhoto').alt=current.name;setTimeout(()=>document.querySelectorAll('.thumbs img').forEach((x,j)=>x.classList.toggle('sel',i===j)),0)}
+function add(id){if(!cart.includes(id))cart.push(id);saveCart();const n=document.getElementById('notice');n.classList.add('show');setTimeout(()=>n.classList.remove('show'),1400)}
+function removeItem(id){cart=cart.filter(x=>x!==id);saveCart();renderCart()}
+function renderCart(){const box=document.getElementById('cartItems'),sum=document.getElementById('cartSummary');if(!cart.length){box.innerHTML='<div class="empty">Tu carrito está vacío.<br><br><button class="secondary" onclick="go(\'catalog\')">Ver piezas disponibles</button></div>';sum.innerHTML='';return}const ps=cart.map(id=>products.find(p=>p.id===id)).filter(Boolean);box.innerHTML=ps.map(p=>`<div class="cartitem"><img src="${p.imgs[0]}" alt="${p.name}"><div><div class="cartArt">${p.art}</div><div class="cartDesc">${p.name}</div><div class="stone" style="margin-top:7px">Pieza única · ${p.stone}</div><div class="price" style="margin-top:5px">${money(p.price)}</div></div><div><button class="remove" onclick="removeItem('${p.id}')">Eliminar</button></div></div>`).join('');const subtotal=ps.reduce((a,p)=>a+p.price,0);sum.innerHTML=`<div class="summary"><div class="sumrow"><span>Productos</span><strong>${money(subtotal)}</strong></div><div class="sumrow"><span>Envío</span><span>Se calculará en checkout</span></div><div class="sumrow"><span>Cuotas</span><span>Hasta 12 cuotas</span></div><div class="sumrow total"><span>Total parcial</span><span>${money(subtotal)}</span></div><button class="primary wide" onclick="alert('Prototipo v0.2: el próximo módulo funcional será checkout + Mercado Pago + Correo Argentino.')">Continuar compra</button></div>`}
+renderHome();renderCatalog();renderArchive();saveCart();
+</script>
+</body>
+</html>
